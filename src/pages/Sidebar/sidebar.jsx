@@ -1,4 +1,5 @@
-
+// import { TrophySpin } from 'react-loading-indicators';
+// import { Commet } from 'react-loading-indicators';
 import { Link } from 'react-router-dom';
 
 export function Sidebar() {
@@ -10,13 +11,18 @@ export function Sidebar() {
       </div>
       <div className="grid p-10 mt-10 font-bold text-[20px]">
         <div className="flex justify-around mt-10">
-          <Link to="/board">Dashboard</Link>
+          <Link to="/dashboard">Dashboard</Link>
+        </div>
+        <div className="flex justify-around mt-10">
+          <Link to="/profile">Account</Link>
         </div>
         <div className="flex justify-around mt-10">
           <Link to="/orders">Orders</Link>
+          {/* <Commet color="#080612" size="medium" text="" textColor="" /> */}
         </div>
         <div className="flex justify-around mt-10">
           <Link to="/yourcart">Your Cart</Link>
+          {/* <TrophySpin color="#080612" size="medium" text="wait" textColor="#6b6767" /> */}
         </div>
       </div>
     </div>

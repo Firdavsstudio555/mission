@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useState } from "react";
+import api from "../../service/api/api";
 
 export function Login() {
     const [post, setPost] = useState({
@@ -18,26 +18,22 @@ export function Login() {
         console.log(post);
 
         // Make the login request
-        axios.post(
-            "https://food-recipe-app-backend-aaka.onrender.com/api/auth/sign-in",
+        api.post(
+            "auth/sign-in",
             JSON.stringify(post),
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }
-        )
-        .then((response) => {
-            const token = response.data.token;
-            localStorage.setItem("token", token); // Store token in localStorage
 
-            // Redirect to dashboard after successful login
-            navigate("/dashboard");
-        })
-        .catch((err) => {
-            console.error(err); // Log the error for debugging
-            alert("Login failed! Please check your email or password."); // Show user-friendly error
-        });
+        )
+            .then((response) => {
+                const token = response.data.token;
+                localStorage.setItem("token", token); // Store token in localStorage
+
+                // Redirect to dashboard after successful login
+                navigate("/dashboard");
+            })
+            .catch((err) => {
+                console.error(err); // Log the error for debugging
+                alert("Login failed! Please check your email or password."); // Show user-friendly error
+            });
     };
 
     return (
@@ -54,7 +50,7 @@ export function Login() {
                         <input
                             onChange={handleInput}
                             name="email"
-                            className="border-2 border-black p-3 rounded-xl ml-24 w-[400px] mt-12 mb-10"
+                            className="outline-none ring-0 border-2 border-black p-3 rounded-xl ml-24 w-[400px] mt-12 mb-10"
                             type="text"
                             placeholder="Your Email address"
                         />
@@ -62,6 +58,7 @@ export function Login() {
                             <input
                                 onChange={handleInput}
                                 name="password"
+                                className="outline-none ring-0 border-0 w-[300px]"
                                 type="password" // Change to "password" for security
                                 placeholder="Your Password"
                             />

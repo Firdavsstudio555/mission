@@ -8,7 +8,8 @@ import Fullpage from "./pages/fullpage/fullpage";
 import { Register } from "./pages/register/register";
 import { Layout } from "./layout";
 import { PrivateRoutes } from "./assets/PriveteRouter";
-
+import { Profile } from "./pages/account/profile";
+import Account from "./pages/account/account";
 
 export const AppRouter = () => {
   return (
@@ -18,6 +19,7 @@ export const AppRouter = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/*" element={<Layout />}>
         <Route element={<PrivateRoutes />}>
+          <Route path="profile" element={<Account />} />
           <Route path="dashboard" element={<Fullpage />} />
           <Route path="board" element={<Board />} />
           <Route path="orders" element={<Orders />} />
